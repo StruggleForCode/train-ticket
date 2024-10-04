@@ -12,11 +12,11 @@ mysql_config = {}
 class GetVoucherHandler(tornado.web.RequestHandler):
 
     def post(self, *args, **kwargs):
-        #Analyze the data transferred: order id and model indicator (0 stands for ordinary, 1 stands for bullet trains and high-speed trains)
+        #分析传输的数据：订单 ID 和模型指标（0 代表普通，1 代表动车和高铁）
         data = json.loads(self.request.body)
         orderId = data["orderId"]
         type = data["type"]
-        #Query for the existence of a corresponding credential based on the order id
+        #根据订单 ID 查询是否存在相应的凭证
         queryVoucher = self.fetchVoucherByOrderId(orderId)
 
         if(queryVoucher == None):
