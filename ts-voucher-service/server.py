@@ -6,10 +6,27 @@ import os
 import pymysql
 import urllib
 import urllib.request
+import logging
+import sys
 
 mysql_config = {}
 
 class GetVoucherHandler(tornado.web.RequestHandler):
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        self.set_default_headers()
+
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin","*")
+        self.set_header("Access-Control-Allow-Credentials", "true")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with,Content-Type,authorization")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        self.set_header("Access-Control-Max-Age", 1000)
+        self.set_header("Content-type", "application/json")
+
+    def options(self):
+        self.set_status(200)
+        self.finish()
 
     def post(self, *args, **kwargs):
         #分析传输的数据：订单 ID 和模型指标（0 代表普通，1 代表动车和高铁）
@@ -97,6 +114,7 @@ class GetVoucherHandler(tornado.web.RequestHandler):
             conn.close()
 
 def make_app():
+    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     return tornado.web.Application([
         (r"/getVoucher", GetVoucherHandler)
     ])
