@@ -78,11 +78,6 @@ services:
     networks:
       - my-network
 
-  ts-account-mongo:
-    image: mongo
-    networks:
-      - my-network
-
   ts-route-service:
     build: ts-route-service
     image: ${IMG_REPO}/ts-route-service:${IMG_TAG}
@@ -234,15 +229,6 @@ services:
       ports:
         - 15680:15680
       networks:
-          - my-network
-
-  ts-ticketinfo-service:
-        build: ts-ticketinfo-service
-        image: ${IMG_REPO}/ts-ticketinfo-service:${IMG_TAG}
-        restart: always
-        ports:
-          - 15681:15681
-        networks:
           - my-network
 
   ts-price-service:
@@ -424,20 +410,6 @@ services:
             - /var/lib/mysql
           networks:
             - my-network
-
-  ts-food-map-service:
-        build: ts-food-map-service
-        image: ${IMG_REPO}/ts-food-map-service:${IMG_TAG}
-        restart: always
-        ports:
-          - 18855:18855
-        networks:
-          - my-network
-
-  ts-food-map-mongo:
-    image: mongo
-    networks:
-      - my-network
 
   ts-route-plan-service:
           build: ts-route-plan-service
