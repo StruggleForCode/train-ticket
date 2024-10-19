@@ -399,17 +399,17 @@ services:
       - my-network
 
   ts-voucher-service:
-          build: ts-voucher-service
-          image: ${IMG_REPO}/ts-voucher-service:${IMG_TAG}
-          restart: always
-          ports:
-            - 16101:16101
-          depends_on:
-            - ts-voucher-mysql
-          volumes:
-            - /var/lib/mysql
-          networks:
-            - my-network
+      build: ts-voucher-service
+      image: ${IMG_REPO}/ts-voucher-service:${IMG_TAG}
+      restart: always
+      ports:
+        - 16101:16101
+      depends_on:
+        - ts-voucher-mysql
+      volumes:
+        - /var/lib/mysql
+      networks:
+        - my-network
 
   ts-route-plan-service:
           build: ts-route-plan-service
