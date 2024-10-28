@@ -1,8 +1,8 @@
 # Codewisdom Train-Ticket system
 
-Repo=codewisdom
-Tag=latest
-Namespace="default"
+Repo=registry.cn-beijing.aliyuncs.com/train-ticket-lee
+Tag=V1.0
+Namespace="train-ticket"
 DeployArgs=""
 
 
