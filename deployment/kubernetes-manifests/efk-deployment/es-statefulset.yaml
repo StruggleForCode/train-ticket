@@ -73,7 +73,7 @@ spec:
     spec:
       serviceAccountName: elasticsearch-logging
       containers:
-      - image: zhongyuanzhao000/gcr_io_google-containers_elasticsearch:v6.2.4
+      - image: m.daocloud.io/gcr.io/google-containers/elasticsearch:v6.2.4
         name: elasticsearch-logging
         resources:
           # need more cpu upon initialization, therefore burstable class
