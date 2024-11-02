@@ -31,7 +31,7 @@ function deploy_infrastructures {
   namespace=$1
   echo "Start deployment Step <1/3>------------------------------------"
   echo "Start to deploy mysql cluster for nacos."
-  helm install $nacosDBRelease --set mysql.mysqlUser=$nacosDBUser --set mysql.mysqlPassword=$nacosDBPass --set mysql.mysqlDatabase=$nacosDBName $mysqlCharts -n $namespace
+  helm install $nacosDBRelease --set mysql.mysqlUser=$nacosDBUser --set mysql.mysqlPassword=$nacosDBPass --set mysql.mysqlDatabase=$nacosDBName --set persistence.storageClass=openebs-hostpath $mysqlCharts -n $namespace
   echo "Waiting for mysql cluster of nacos to be ready ......"
   kubectl rollout status statefulset/$nacosDBRelease-mysql -n $namespace
   echo "Start to deploy nacos."
