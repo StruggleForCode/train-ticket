@@ -2,9 +2,15 @@ FROM python:3
 
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
-RUN apt update -y
-RUN apt install -y cmake
-RUN apt install -y libgl1-mesa-glx
+# ubantu
+# RUN apt update -y
+# RUN apt install -y cmake
+# RUN apt install -y libgl1-mesa-glx
+
+# 安装依赖 CentOS
+RUN yum install -y epel-release && \
+    yum install -y python3 python3-pip cmake mesa-libGL && \
+    yum clean all
 
 ENV PYTHONUNBUFFERED=TRUE
 
