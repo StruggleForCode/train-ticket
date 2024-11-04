@@ -7,9 +7,13 @@ echo '***Deploy EFK(elasticsearch、fluentd、kibana)***'
 kubectl apply -f .
 
 # get master IP address ---var3
-var1=`kubectl cluster-info | awk 'NR == 1 {print $6}'`
+var1=`kubectl cluster-info | awk 'NR == 1 {print $7}'`
 var2=${var1#*//}
 var3=${var2%:*}
+
+echo "var1: $var1"
+echo "var2: $var2"
+echo "var3: $var3"
 
 # expose the kibana service by proxy
 echo '***Expose Kibana service on masterIP:8086***'
