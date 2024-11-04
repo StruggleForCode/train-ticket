@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: kibana-logging
-        image: zhongyuanzhao000/docker_elastic_co_kibana_kibana-oss:v6.2.4
+        image: m.daocloud.io/docker.elastic.co/kibana/kibana-oss:v6.2.4
         resources:
           # need more cpu upon initialization, therefore burstable class
           limits:

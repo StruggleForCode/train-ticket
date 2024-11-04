@@ -11,6 +11,7 @@ var1=`kubectl cluster-info | awk 'NR == 1 {print $7}'`
 var2=${var1#*//}
 var3=${var2%:*}
 
+# 打印变量的值
 echo "var1: $var1"
 echo "var2: $var2"
 echo "var3: $var3"
