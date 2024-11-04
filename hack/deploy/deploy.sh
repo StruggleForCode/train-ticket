@@ -26,7 +26,7 @@ function quick_start {
 
 function deploy_all {
   deploy_infrastructures  $namespace
-  deploy_tt_mysql_each_service  $namespace
+  deploy_tt_mysql_all_in_one  $namespace
   deploy_tt_secret  $namespace
   deploy_tt_svc $namespace
   deploy_tt_dp_sw  $namespace
